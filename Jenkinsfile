@@ -10,7 +10,7 @@ pipeline {
 
     stage('Deploy WAR to Tomcat') {
       steps {
-        script {
+         script {
           def pod = sh(script: "kubectl get pod -l app=tomcat -o jsonpath='{.items[0].metadata.name}'", returnStdout: true).trim()
           sh "kubectl cp target/mywebapp.war ${pod}:/usr/local/tomcat/webapps/"
         }
