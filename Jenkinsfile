@@ -12,7 +12,7 @@ pipeline {
       steps {
         script {
           def pod = sh(script: "kubectl get pod -l app=tomcat -o jsonpath='{.items[0].metadata.name}'", returnStdout: true).trim()
-          sh "kubectl cp target/yourapp.war ${pod}:/usr/local/tomcat/webapps/"
+          sh "kubectl cp target/mywebapp.war ${pod}:/usr/local/tomcat/webapps/"
         }
       }
     }
